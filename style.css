@@ -5,6 +5,55 @@
     --text-color: #fff;
     --border-radius: 5px;
 }
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header.dark-mode {
+    background-color: #333;
+}
+
+footer.dark-mode {
+    background-color: #333;
+}
+
+.result.dark-mode {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+form input[type="text"].dark-mode {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+form button[type="submit"].dark-mode {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Dark Mode Toggle Button */
+button#toggleDarkMode {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button#toggleDarkMode:hover {
+    background-color: #444;
+}
+
 /* Toast styling */
 #toast {
     visibility: hidden;
@@ -115,12 +164,6 @@ header h1 {
     font-size: 48px;
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-header h1 {
-    font-size: 48px;
-    display: flex;
-    align-items: center;
     gap: 15px;
 }
 header h1 .icon {
@@ -146,14 +189,14 @@ header{
     color: var(--text-color);
 }
 header h1{
-    font-size: 56px;;
+    font-size: 56px;
 }
 
 main{
     min-height: 78vh;
-    padding:var(--padding);
+    padding: var(--padding);
     max-width: 800px;
-    margin:0 auto ;
+    margin: 0 auto ;
 }
 main form{
     display: flex;
@@ -161,7 +204,7 @@ main form{
 }
 
 form input[type="text"], button[type="submit"], .result div a{
-    border:none;
+    border: none;
     font-size: 16px;
     font-weight: 500;
     border-radius: var(--border-radius);
@@ -203,17 +246,16 @@ form button[type="submit"]:hover {
     animation: fadeIn 0.5s ease-in;
 }
 
-
 form button[type="submit"]{
-    background-color: var(--header-color) ;
+    background-color: var(--header-color);
     color: var(--text-color);
     margin-left: 10px;
     cursor: pointer;
 }
 
 footer{
-    background-color:var(--header-color);
-    color:var(--text-color);
+    background-color: var(--header-color);
+    color: var(--text-color);
     padding: var(--padding);
     text-align: center;
     font-size: 18px;
@@ -238,7 +280,7 @@ footer:hover {
 .result{
     background-color: #fff;
     padding: var(--padding);
-    border-radius:var(--border-radius) ;
+    border-radius: var(--border-radius);
     margin-top: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
@@ -248,7 +290,7 @@ footer:hover {
 
 .result p[class="partOfSpeech"]{
     font-style: italic;
-    color: #808080 ;
+    color: #808080;
     margin-top: 2px;
 }
 
@@ -256,9 +298,9 @@ footer:hover {
     margin-top: 20px;
 }
 .result div a{
-text-decoration:none;
-background-color: var(--header-color);
-color: var(--text-color);
+    text-decoration: none;
+    background-color: var(--header-color);
+    color: var(--text-color);
 }
 
 .result li{
@@ -266,12 +308,11 @@ color: var(--text-color);
     margin-left: 20px;
 }
 
-
-@media screen and (max-width:320px){
+@media screen and (max-width: 320px){
     main form{
         flex-direction: column;
     }
-    form bottom[type="submit"]{
+    form button[type="submit"]{
         margin-left: 0px;
         margin-top: 10px;
     }
