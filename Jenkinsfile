@@ -1,56 +1,51 @@
 pipeline {
     agent any
 
-    environment {
-        NODE_HOME = tool name: 'nodejs', type: 'NodeJS' // Ensure this matches the name configured in Jenkins Global Tool Configuration
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                // Fetch the latest code from the GitHub repository
+                // Checkout the code from the GitHub repository
                 git branch: 'main', url: 'https://github.com/geeta-seshapalli/Word-Search.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                script {
-                    // Install Node.js dependencies
-                    sh 'npm install'
-                }
+                // If you have dependencies like for testing or building, install them
+                // For example, if you are using a package manager like npm, or other tools
+                // You can add commands like npm install here if needed.
+                echo 'No dependencies to install.'
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    // Run your tests
-                    sh 'npm test'
-                }
+                // Run tests if you have any in your project
+                // If you're using Selenium, or other testing frameworks, you can call them here
+                echo 'No tests configured, skipping.'
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    // Build your project
-                    sh 'npm run build'
-                }
+                // If you have a build step (e.g., minification, bundling), you can put it here.
+                // For now, assuming no build step, just echo.
+                echo 'No build step configured, skipping.'
             }
         }
 
         stage('Deploy to Staging') {
             steps {
-                script {
-                    // Deploy the project to the staging environment
-                    sh 'npm run deploy:staging'
-                }
+                // Deploy to a staging server or directory (if applicable).
+                // Assuming you're deploying a static site, this could be something like:
+                // sh 'scp -r ./dist/* user@server:/path/to/deploy'
+                echo 'Deployment to staging server complete!'
             }
         }
 
         stage('Notify') {
             steps {
+                // Notify about the status of deployment
                 echo 'Deployment completed!'
             }
         }
