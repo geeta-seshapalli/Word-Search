@@ -17,3 +17,10 @@ spec:
         image: geetaseshapalli19/wordsearch-app:latest
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"  # Minimum memory requested
+            cpu: "250m"      # Minimum CPU requested
+          limits:
+            memory: "128Mi"  # Maximum memory allowed
+            cpu: "500m"      # Maximum CPU allowed
