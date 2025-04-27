@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordsearch-deployment
+spec:
+  replicas: 2  # You can increase this for more replicas
+  selector:
+    matchLabels:
+      app: wordsearch
+  template:
+    metadata:
+      labels:
+        app: wordsearch
+    spec:
+      containers:
+      - name: wordsearch
+        image: geetaseshapalli19/wordsearch-app:latest
+        ports:
+        - containerPort: 80
