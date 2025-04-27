@@ -15,11 +15,12 @@ form.addEventListener('submit', (e) => {
 function showToast(message, color = "#ff4d4d") { // default = red
     const toast = document.getElementById("toast");
     toast.innerText = message;
+    toast.setAttribute('data-toast-text', message);
     toast.style.backgroundColor = color;
     toast.className = "show";
     setTimeout(() => {
         toast.className = toast.className.replace("show", "");
-    }, 3000); // hide after 3 seconds
+    }, 1000); // hide after 3 seconds
 }
 
 // Function to fetch word info from the dictionary API
@@ -29,10 +30,13 @@ const getWordInfo = async (word) => {
         <div class="spinner"></div>
         <p class="loading-text">Looking up the dictionary... 📖</p>
     `;
-        // Success Toast
-        showToast("✅ Word fetched successfully!", "#4BB543"); // green color
 
         const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        
+        if (!response.ok) {
+            throw new Error("Sorry, the word could not be found!");
+        }
+        
         const data = await response.json();
 
         let definitions = data[0].meanings[0].definitions[0];
@@ -55,9 +59,12 @@ const getWordInfo = async (word) => {
 
         resultDiv.innerHTML += `<div><a href="${data[0].sourceUrls}" target="_blank">Read More...</a></div>`;
 
+        // Show success toast only after data is fetched successfully
+        showToast("✅ Word fetched successfully!", "#4BB543"); // green color
+
     } catch (error) {
         resultDiv.innerHTML = "";
-        showToast("❌ Sorry, the word could not be found!");
+        showToast(error.message, "#FF4D4D"); // Show error toast
     }
 }
 
